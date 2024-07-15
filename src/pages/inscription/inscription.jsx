@@ -1,6 +1,6 @@
 import React from 'react';
 import Inscription from '../../Inscription'
-// import ChezVous from './IMG.png'
+import './inscription.css'
 function Home() {
   return (
     <>

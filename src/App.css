@@ -9,3 +9,7 @@ h3 , label {
 h2 {
   font-family: "Poppins", sans-serif;
 }
+#root {
+  width: 1140px;
+  margin: auto;
+}

@@ -62,7 +62,7 @@ const MyComponent = () => {
                 <label>Password:</label>
                 <input type="password" name="password" value={password} onChange={handleInputChange} />
 
-                <button type="submit">Envoyer</button>
+                <button type="submit">Connexion</button>
                 <p> Vous n'avez pas de compte <Link to ='/register'> Inscrivez-vous</Link></p>
             </form>
             </div>

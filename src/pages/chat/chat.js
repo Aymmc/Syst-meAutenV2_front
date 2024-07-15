@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import Cookies from 'js-cookie';
-
+import "./chat.css"
+import envoye from './envoye.png';
 // Assurez-vous que l'URL du serveur correspond à votre configuration
 const socket = io('http://localhost:5000');
 
@@ -68,9 +69,13 @@ const Chat = () => {
     };
 
     return (
-        <div>
-            <h1>Chat App</h1>
+        <>
+            
+            
+            <div className='chat-container'>
             {!joined ? (
+                <>
+                <h1>Chat App</h1>
                 <div>
                     {user && user.login ? (
                         <button onClick={handleJoin}>Rejoins le chat :  {user.login}</button>
@@ -78,13 +83,16 @@ const Chat = () => {
                         <p>Chargement...</p>
                     )}
                 </div>
+                </>
             ) : (
                 <>
+                <div className='chat-content'>
                     <ul>
                         {messages.map((msg, index) => (
                             <li key={index}>{msg}</li>
                         ))}
                     </ul>
+                    </div>
                     <form onSubmit={handleSubmit}>
                         <input
                             type="text"
@@ -92,11 +100,12 @@ const Chat = () => {
                             onChange={(e) => setInput(e.target.value)}
                             placeholder="Type a message"
                         />
-                        <button type="submit">Send</button>
+                        <button type="submit"><img src={envoye} alt="envoye"/></button>
                     </form>
                 </>
             )}
         </div>
+        </>
     );
 };
 

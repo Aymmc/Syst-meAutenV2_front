@@ -60,8 +60,9 @@ const MyComponent = () => {
     };
 
     return (
-        <>
+        <div className='inscription'>
         <h2>Inscription</h2>
+        <h3>Inscrit toi pour continuer</h3>
         <form onSubmit={handleSubmit}>
             <label>Login:</label>
             <input type="text" name="login" value={login} onChange={handleInputChange} />
@@ -74,7 +75,7 @@ const MyComponent = () => {
 
             <button type="submit">Envoyer</button>
         </form>
-        </>
+        </div>
     );
 };
 
