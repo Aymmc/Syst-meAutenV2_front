@@ -1,10 +1,9 @@
-// src/pages/chat.jsx
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import Cookies from 'js-cookie';
-import "./chat.css"
+import './chat.css';
 import envoye from './envoye.png';
-// Assurez-vous que l'URL du serveur correspond à votre configuration
+
 const socket = io('http://localhost:5000');
 
 const Chat = () => {
@@ -14,7 +13,6 @@ const Chat = () => {
     const [joined, setJoined] = useState(false);
 
     useEffect(() => {
-        // Récupérer les détails de l'utilisateur
         const fetchUserDetails = async () => {
             const token = Cookies.get('authToken');
             if (token) {
@@ -39,23 +37,19 @@ const Chat = () => {
     }, []);
 
     useEffect(() => {
-        // Écouter les messages du serveur
         socket.on('chat message', (msg) => {
-            setMessages((prevMessages) => [...prevMessages, `${msg.pseudo}: ${msg.text}`]);
+            setMessages((prevMessages) => [...prevMessages, msg]);
         });
 
-        // Nettoyer les événements lors de la déconnexion
         return () => {
             socket.off('chat message');
         };
     }, []);
 
     const handleJoin = () => {
-        // Utiliser directement le pseudo récupéré au lieu de demander à l'utilisateur
         if (user && user.login) {
             socket.emit('join', user.login);
             setJoined(true);
-            console.log(user.login);
         }
     };
 
@@ -64,48 +58,51 @@ const Chat = () => {
         if (input.trim()) {
             socket.emit('chat message', { pseudo: user.login, text: input });
             setInput('');
-            console.log(user.login);
         }
     };
 
     return (
-        <>
-            
-            
-            <div className='chat-container'>
-            {!joined ? (
-                <>
+        <div className='chat-wrapper'>
+            <div className='chat-content'>
                 <h1>Chat App</h1>
-                <div>
-                    {user && user.login ? (
-                        <button onClick={handleJoin}>Rejoins le chat :  {user.login}</button>
-                    ) : (
-                        <p>Chargement...</p>
-                    )}
-                </div>
-                </>
-            ) : (
-                <>
-                <div className='chat-content'>
-                    <ul>
-                        {messages.map((msg, index) => (
-                            <li key={index}>{msg}</li>
-                        ))}
-                    </ul>
+                {!joined ? (
+                    <div>
+                        {user && user.login ? (
+                            <button onClick={handleJoin}>Rejoins le chat : {user.login}</button>
+                        ) : (
+                            <p>Chargement...</p>
+                        )}
                     </div>
-                    <form onSubmit={handleSubmit}>
-                        <input
-                            type="text"
-                            value={input}
-                            onChange={(e) => setInput(e.target.value)}
-                            placeholder="Type a message"
-                        />
-                        <button type="submit"><img src={envoye} alt="envoye"/></button>
-                    </form>
-                </>
-            )}
+                ) : (
+                    <>
+                              <div className='messages'>
+                            {messages.map((msg, index) => (
+                                <div
+                                    key={index}
+                                    className={`message-bubble ${
+                                        msg.pseudo === user.login ? 'user-message' : 'other-message'
+                                    }`}
+                                >
+                                    <strong>{msg.pseudo}:</strong> {msg.text}
+                                </div>
+                            ))}
+                        </div>
+                    </>
+                )}
+            </div>
+            <form className='send-bar' onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    placeholder="Type a message"
+                />
+                <button type="submit">
+                    Envoyé
+                
+                </button>
+            </form>
         </div>
-        </>
     );
 };
 

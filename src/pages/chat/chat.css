@@ -1,39 +1,106 @@
-.chat-container form {
+/* Fichier: chat.css */
 
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    display: flex;
-    justify-content: center;
-    
+/* Style de base pour le body et html */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
-.chat-container form input {
-    width: 50%;
-    height: 30px;
-    border: 1px solid ;
-    border-radius: 3px;
-}
-.chat-container form button {
-    height: 34px;   
-    border: none ;
-    cursor: pointer;
-}
-.chat-container form button img {
-    width: 20px;
-}
-.chat-container {
-    background-color: #E3E8EC;
+
+/* Style pour le wrapper principal */
+.chat-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 90Vh;
-}
-.chat-content{
-    height: 80vh;
-    overflow-x: auto; /* Affiche une barre de défilement horizontale si nécessaire */
-    overflow-y: auto; /* Affiche une barre de défilement verticale si nécessaire */ 
+    height: 90vh;
 }
 
+/* Style pour le contenu du chat */
+.chat-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+/* Style pour la zone de messages */
+.messages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Style pour les bulles de message */
+.message-bubble {
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    word-break: break-word;
+}
+
+/* Style pour les messages de l'utilisateur */
+.user-message {
+    align-self: flex-end;
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #0056b3;
+}
+
+/* Style pour les messages des autres utilisateurs */
+.other-message {
+    align-self: flex-start;
+    background-color: #e1e1e1;
+    color: #000;
+    border: 1px solid #ccc;
+}
+
+/* Optionnel: Ajouter un triangle pour pointer vers l'expéditeur */
+.message-bubble::after {
+    content: "";
+    position: absolute;
+    border-style: solid;
+}
+
+.user-message::after {
+    border-color: #007bff transparent transparent transparent;
+    border-width: 10px 10px 0 10px;
+    bottom: -10px;
+    right: 10px;
+}
+
+.other-message::after {
+    border-color: #e1e1e1 transparent transparent transparent;
+    border-width: 10px 10px 0 10px;
+    bottom: -10px;
+    left: 10px;
+}
+
+/* Style pour la barre d'envoi */
+.send-bar {
+    display: flex;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    align-items: center;
+}
+
+.send-bar input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.send-bar button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.send-bar button:hover {
+    background-color: #0056b3;
+}
