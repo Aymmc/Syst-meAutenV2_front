@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import Cookies from 'js-cookie';
 import './chat.css';
-import envoye from './envoye.png';
 
 const socket = io('http://localhost:5000');
 
@@ -65,16 +64,19 @@ const Chat = () => {
         <div className='chat-wrapper'>
             <div className='chat-content'>
                 <h1>Chat App</h1>
+            
                 {!joined ? (
                     <div>
                         {user && user.login ? (
                             <button onClick={handleJoin}>Rejoins le chat : {user.login}</button>
+                            
                         ) : (
                             <p>Chargement...</p>
                         )}
                     </div>
                 ) : (
                     <>
+                    
                               <div className='messages'>
                             {messages.map((msg, index) => (
                                 <div
