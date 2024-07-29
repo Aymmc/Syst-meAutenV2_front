@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import Cookies from 'js-cookie'; // Importez js-cookie
+import React, { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
+
 
 const SendFriendRequest = () => {
     const [receiverLogin, setReceiverLogin] = useState('');
@@ -30,18 +31,18 @@ const SendFriendRequest = () => {
     };
 
     return (
-        <div>
+        <div className='request'>
             <input
                 type="text"
                 value={receiverLogin}
                 onChange={(e) => setReceiverLogin(e.target.value)}
-                placeholder="Login de l'ami"
+                placeholder=""
             />
             <button onClick={handleSendRequest}>Envoyer une demande</button>
             {message && <p>{message}</p>}
+        
         </div>
     );
 };
 
-export default SendFriendRequest;
-    
+export default SendFriendRequest; 
