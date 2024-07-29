@@ -3,4 +3,5 @@ header {
     height: 50px;
     display: flex;
     flex-direction: row-reverse;
+    justify-content: space-between;
 }

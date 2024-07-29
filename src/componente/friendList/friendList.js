@@ -29,7 +29,7 @@ const FriendList = () => {
     }, []);
 
     return (
-        <div>
+        <div className='list'>
             <h2>Mes Amis</h2>
             <ul>
                 {friends.map((friend) => (

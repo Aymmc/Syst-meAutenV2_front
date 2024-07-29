@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie'; // Assurez-vous que js-cookie est installé
-import './App.css'; // Assurez-vous d'avoir les styles appropriés dans ce fichier CSS
-import FriendList from '../friendList/friendList';
-
 
 const FriendRequestList = () => {
     const [requests, setRequests] = useState([]);
@@ -40,7 +37,7 @@ const FriendRequestList = () => {
     if (error) return <p>Erreur: {error}</p>;
 
     return (
-        <div className='list'>
+        <div>
             <h2>Demandes d’amitié</h2>
             <ul>
                 {requests.length === 0 ? (
@@ -100,81 +97,11 @@ const FriendRequestItem = ({ request }) => {
 
     return (
         <li>
-            <span>{request.senderId}</span>
-            
+            <span>ID de l'expéditeur: {request.senderId}</span>
             <button onClick={handleAccept}>Accepter</button>
             <button onClick={handleReject}>Rejeter</button>
         </li>
     );
 };
 
-const SendFriendRequest = () => {
-    const [receiverLogin, setReceiverLogin] = useState('');
-    const [message, setMessage] = useState('');
-
-    const handleSendRequest = async () => {
-        console.log(receiverLogin);
-        try {
-            const response = await fetch('http://localhost:5000/friendship/send', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${Cookies.get('authToken')}` // Utilisez les cookies pour obtenir le token
-                },
-                body: JSON.stringify({ receiverLogin })
-            });
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || 'Erreur lors de l’envoi de la demande.');
-            }
-
-            setMessage('Demande d’amitié envoyée.');
-        } catch (error) {
-            console.error('Erreur lors de l’envoi de la demande', error);
-            setMessage(error.message || 'Erreur lors de l’envoi de la demande.');
-        }
-    };
-
-    return (
-        <div className='request'>
-            <input
-                type="text"
-                value={receiverLogin}
-                onChange={(e) => setReceiverLogin(e.target.value)}
-                placeholder=""
-            />
-            <button onClick={handleSendRequest}>Envoyer une demande</button>
-            {message && <p>{message}</p>}
-            <FriendList/>
-        </div>
-    );
-};
-
-const Burger = () => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleNav = () => {
-        setIsOpen(!isOpen);
-    };
-
-    return (
-        <div>
-            <div id="mySidenav" className={`sidenav ${isOpen ? 'open' : ''}`}>
-                <a href="#" className="close" onClick={toggleNav}>×</a>
-                <FriendRequestList />
-                <SendFriendRequest />
-            </div>
-
-            <a href="#" id="openBtn" onClick={toggleNav}>
-                <span className="burger-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-            </a>
-        </div>
-    );
-};
-
-export default Burger;
+export default FriendRequestList;

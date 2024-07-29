@@ -6,7 +6,7 @@ function Lobby() {
   return (
     <>
       <Link to ='/chat'> Direction Chat</Link>
-      <Link to ='/friend'> Direction friend</Link>
+  
     </>
   );
 }

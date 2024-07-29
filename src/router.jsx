@@ -6,10 +6,13 @@ import Chat from './pages/chat/chat'
 import Home from './pages/home/home'
 import Friend from './pages/friend/friend';
 import Lobby from './pages/lobby/lobby';
+
+      
 function Router() {
   return (
 
     <Routes>
+      
       <Route path="/" element={<Home />} />
       <Route path='/register' element={<Inscription />} />
       <Route path="/login" element={<Login />} />

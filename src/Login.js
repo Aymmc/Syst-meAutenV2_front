@@ -48,6 +48,7 @@ const MyComponent = () => {
             });
 
             navigate('/lobby');
+            window.location = document.location
         } catch (error) {
             console.error('Erreur lors de l\'envoi des données :', error.message);
             setErrorMessage('Erreur lors de la connexion au serveur'); // Affiche un message d'erreur générique

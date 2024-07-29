@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import Friend from '../../pages/friend/friend';
 const LogoutButton = () => {
     const navigate = useNavigate();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -26,7 +27,10 @@ const LogoutButton = () => {
 
     return (
         isAuthenticated && (
+            <>
                 <button onClick={handleLogout}>Déconnexion</button>
+                <Friend/>
+                </>
         )
     );
 };
