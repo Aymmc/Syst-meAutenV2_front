@@ -45,7 +45,7 @@
     background: none;
     border: none;
     color: black;
-    margin-left: 10px;
+   
   }
   
   .burger-icon {
@@ -68,20 +68,40 @@
   border-radius: 5px;
   width: 220px;
 }
-.list h2, .list ul, .request input, .request button, .list li   {
+.list h2, .list ul, .request input,  .list li   {
   margin-bottom: 15px;
   margin-left: 10px
 
 }
 .request button {
-  width: 150PX;
-    height: 40px;
-    border-radius: 10px;
-    border: none;
+    height: 30px;
+    border: 1px solid #8F8E8E;
+    border-radius: 10%;
+    width: 30px;
     cursor: pointer;
-    background-color: #535353;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    font-weight: bold;
-    margin-bottom: 15px;
+    
+}
+.request button img {
+    width: 25px;
+    height: 28px;
+}
+.request {
+    display: flex;
+}
+.requestbutton button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 20px;
+}
+.requestbutton img {
+  width: 20px;
+  height: 20px;
+}
+.requestbutton{
+  display: flex;
+  align-items: center;
+}
+.logindemande{
+  margin-left: 10px;
 }

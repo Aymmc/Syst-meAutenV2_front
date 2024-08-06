@@ -1,18 +1,17 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Inscription from './pages/inscription/inscription';
-import Login from './pages/login/login'
-import Chat from './pages/chat/chat'
-import Home from './pages/home/home'
+import Login from './pages/login/login';
+import Chat from './pages/chat/chat';
+import Home from './pages/home/home';
 import Friend from './pages/friend/friend';
 import Lobby from './pages/lobby/lobby';
+// import PrivateChat from './pages/privateChat/privateChat.jsx';
 
-      
 function Router() {
   return (
-
     <Routes>
-      
+      {/* <Route path="/chat/:friendId" element={<PrivateChat />} /> */}
       <Route path="/" element={<Home />} />
       <Route path='/register' element={<Inscription />} />
       <Route path="/login" element={<Login />} />
@@ -20,7 +19,6 @@ function Router() {
       <Route path='/friend' element={<Friend />} />
       <Route path='/lobby' element={<Lobby />} />
     </Routes>
-
   );
 }
 

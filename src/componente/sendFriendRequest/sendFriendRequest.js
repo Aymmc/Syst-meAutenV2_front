@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
-
+import envoie from './bouton-denvoi.png'
 
 const SendFriendRequest = () => {
     const [receiverLogin, setReceiverLogin] = useState('');
@@ -31,6 +31,8 @@ const SendFriendRequest = () => {
     };
 
     return (
+        <>
+        <h2 className='logindemande'>Login de la demande </h2>
         <div className='request'>
             <input
                 type="text"
@@ -38,10 +40,11 @@ const SendFriendRequest = () => {
                 onChange={(e) => setReceiverLogin(e.target.value)}
                 placeholder=""
             />
-            <button onClick={handleSendRequest}>Envoyer une demande</button>
+            <button onClick={handleSendRequest}><img src={envoie}/></button>
             {message && <p>{message}</p>}
         
         </div>
+        </>
     );
 };
 

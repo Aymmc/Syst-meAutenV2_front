@@ -54,6 +54,7 @@ const Chat = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+     
         if (input.trim()) {
             socket.emit('chat message', { pseudo: user.login, text: input });
             setInput('');

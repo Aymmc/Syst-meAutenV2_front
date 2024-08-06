@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie'; // Assurez-vous que js-cookie est installé
-import './App.css'; // Assurez-vous d'avoir les styles appropriés dans ce fichier CSS
 import FriendList from '../friendList/friendList';
 import FriendRequestItem from '../friendRequestItem/friendRequestItem';
 import SendFriendRequest from '../sendFriendRequest/sendFriendRequest';

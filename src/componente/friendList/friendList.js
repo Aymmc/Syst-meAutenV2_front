@@ -31,11 +31,11 @@ const FriendList = () => {
     return (
         <div className='list'>
             <h2>Mes Amis</h2>
-            <ul>
+            <select>
                 {friends.map((friend) => (
-                    <li key={friend.id}>{friend.login}</li>
+                    <option value={friend.login} key={friend.id}>{friend.login}</option>
                 ))}
-            </ul>
+            </select>
         </div>
     );
 };

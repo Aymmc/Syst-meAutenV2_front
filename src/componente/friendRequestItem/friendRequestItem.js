@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Cookies from 'js-cookie'; // Assurez-vous que js-cookie est installé
-
-
+import accept from './accept.png'
+import refuse from './refuse.png'
 
 const FriendRequestItem = ({ request }) => {
     const handleAccept = async () => {
@@ -26,6 +26,7 @@ const FriendRequestItem = ({ request }) => {
     };
 
     const handleReject = async () => {
+        
         try {
             const response = await fetch('http://localhost:5000/friendship/reject', {
                 method: 'POST',
@@ -47,11 +48,11 @@ const FriendRequestItem = ({ request }) => {
     };
 
     return (
-        <li>
-            <span>{request.senderId}</span>
+        <li className='requestbutton'>
+            <span>{request.senderLogin}</span> 
             
-            <button onClick={handleAccept}>Accepter</button>
-            <button onClick={handleReject}>Rejeter</button>
+            <button className="accepte"onClick={handleAccept}><img src={accept}/></button>
+            <button className="refuse"onClick={handleReject}><img src={refuse}/></button>
         </li>
     );
 };

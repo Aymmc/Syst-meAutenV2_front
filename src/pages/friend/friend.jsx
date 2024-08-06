@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import io from 'socket.io-client';
 import SendFriendRequest from '../../componente/sendFriendRequest/sendFriendRequest';
 import FriendRequestList from '../../componente/friendRequestList/friendRequestList';
-
+import './friend.css'
 
 const socket = io('http://localhost:5000');
 
