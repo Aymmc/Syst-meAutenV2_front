@@ -54,9 +54,18 @@ const Chat = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-     
+        const receiver = document.getElementById('receiverInput').value;  // Cette ligne peut être enlevée si vous ne l'utilisez pas
+
         if (input.trim()) {
-            socket.emit('chat message', { pseudo: user.login, text: input });
+            const message = { pseudo: user.login, text: input };
+            console.log('Sending message:', message, 'to', receiver);
+
+            // Ajoute le message envoyé à l'état local
+            setMessages((prevMessages) => [...prevMessages, message]);
+
+            // Envoi du message au serveur
+            socket.emit('chat message', message, receiver);
+
             setInput('');
         }
     };
@@ -70,15 +79,13 @@ const Chat = () => {
                     <div>
                         {user && user.login ? (
                             <button onClick={handleJoin}>Rejoins le chat : {user.login}</button>
-                            
                         ) : (
                             <p>Chargement...</p>
                         )}
                     </div>
                 ) : (
                     <>
-                    
-                              <div className='messages'>
+                        <div className='messages'>
                             {messages.map((msg, index) => (
                                 <div
                                     key={index}
@@ -102,7 +109,6 @@ const Chat = () => {
                 />
                 <button type="submit">
                     Envoyé
-                
                 </button>
             </form>
         </div>

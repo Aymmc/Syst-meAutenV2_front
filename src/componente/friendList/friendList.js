@@ -31,7 +31,8 @@ const FriendList = () => {
     return (
         <div className='list'>
             <h2>Mes Amis</h2>
-            <select>
+            <select id='receiverInput'>
+                
                 {friends.map((friend) => (
                     <option value={friend.login} key={friend.id}>{friend.login}</option>
                 ))}
